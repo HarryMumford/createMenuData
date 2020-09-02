@@ -1,22 +1,31 @@
 function createMenuData(data) {
   let output = [];
+  let parents = {};
 
-  const parent = data[0].split('/')[0];
-  const children = data[0].split('/')[1];
+  data.forEach((inputEntry) => {
+    const parent = inputEntry.split('/')[0];
+    const children = inputEntry.split('/')[1];
 
-  if (!children) {
-    return [];
-  }
+    if (!children) {
+      return [];
+    }
 
-  const entry = { title: parent, data: [children] };
+    if (parents[parent]) {
+      parents[parent].push(children);
+    } else {
+      parents[parent] = [children];
+    }
+  });
 
-  output.push(entry);
+  Object.keys(parents).forEach((parent) => {
+    output.push({ title: parent, data: parents[parent] });
+  });
 
   return output;
 }
 
 describe('menu Data Generator', () => {
-  it('returns empty array when given no children ', () => {
+  it('returns empty array when given parent but no children ', () => {
     const data = ['parent1'];
 
     const expectedResult = [];
@@ -29,6 +38,17 @@ describe('menu Data Generator', () => {
     const data = ['parent1/parent1child'];
 
     const expectedResult = [{ title: 'parent1', data: ['parent1child'] }];
+
+    const actualResult = createMenuData(data);
+    expect(actualResult).toMatchObject(expectedResult);
+  });
+
+  it('returns correct data structure for single parent and 2 children', () => {
+    const data = ['parent1/parent1child', 'parent1/parent1child2'];
+
+    const expectedResult = [
+      { title: 'parent1', data: ['parent1child', 'parent1child2'] }
+    ];
 
     const actualResult = createMenuData(data);
     expect(actualResult).toMatchObject(expectedResult);
