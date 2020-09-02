@@ -1,15 +1,29 @@
+# Tech test
+
+_*Following TDD*_
+
+## Inputs and outputs
+
+```
+['parent1'] => []
+["parent1/parent1child"] => [{title: "parent1", data: ["parent1child"]}]
+```
+
 ## Clone this repository
+
 please do not fork it!
 
 ## Setup
-install yarn or npm globally 
+
+install yarn or npm globally
 
 run `yarn` or `npm install`
 
 ## Challenge
+
 Write some code to implement the function `createMenuData`
 
-Use the test runner `jest` to run the `gradTest.test.js` 
+Use the test runner `jest` to run the `gradTest.test.js`
 
 Commit your changes and push them up to your own git repositry!
 Once done, link us the URL of your solution
