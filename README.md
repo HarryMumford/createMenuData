@@ -1,12 +1,42 @@
 # Tech test
 
+# Approach:
+
 _*Following TDD*_
 
 ## Inputs and outputs
 
 ```
 ['parent1'] => []
+
 ["parent1/parent1child"] => [{title: "parent1", data: ["parent1child"]}]
+
+["parent1/parent1child", 'parent2'] => [{title: "parent1", data: ["parent1child"]}]
+
+["parent1/parent1child", "parent1/parent1child2"] => [{ title: "parent1" data: ["parent1child", "parent1child2"] }]
+
+[
+    "parent1/parent1child",
+    "parent1/parent1child",
+    "parent2/parent1child1"
+]
+
+=>
+
+[
+    { title: "parent1" data: ["parent1child", "parent1child2"] },
+    { title: "parent2" data: ["parent2child"] }
+]
+```
+
+## Tests (simplest first)
+
+```
+it returns empty array when given no children
+it returns correct data structure for single parent and single child
+it does not return an entry when parent has no children
+it returns correct data structure for single parent and 2 children
+it returns correct data structure for 2 parents and 3 children
 ```
 
 ## Clone this repository
