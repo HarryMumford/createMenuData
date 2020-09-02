@@ -24,8 +24,8 @@ _*Following TDD*_
 =>
 
 [
-    { title: "parent1" data: ["parent1child", "parent1child2"] },
-    { title: "parent2" data: ["parent2child"] }
+    { title: "parent1", data: ["parent1child", "parent1child2"] },
+    { title: "parent2", data: ["parent2child"] }
 ]
 ```
 
@@ -34,9 +34,16 @@ _*Following TDD*_
 ```
 it returns empty array when given no children
 it returns correct data structure for single parent and single child
+it does not return an entry when parent has no children
 it returns correct data structure for single parent and 2 children
 it returns correct data structure for 2 parents and 3 children
 ```
+
+![tests](https://github.com/HarryMumford/createMenuData/blob/master/tests.PNG)
+
+## Assumptions
+
+Following the example test, I have assumed the data is always in order. The algorithm does not sort the data if passed unordered (e.g. `['parent1/parent1child8', 'parent1/parent1child1']`)
 
 ## Clone this repository
 
