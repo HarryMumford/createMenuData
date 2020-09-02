@@ -1,12 +1,34 @@
 function createMenuData(data) {
-  return [];
+  let output = [];
+
+  const parent = data[0].split('/')[0];
+  const children = data[0].split('/')[1];
+
+  if (!children) {
+    return [];
+  }
+
+  const entry = { title: parent, data: [children] };
+
+  output.push(entry);
+
+  return output;
 }
 
 describe('menu Data Generator', () => {
-  it('creates correct data structure ', () => {
+  it('returns empty array when given no children ', () => {
     const data = ['parent1'];
 
     const expectedResult = [];
+
+    const actualResult = createMenuData(data);
+    expect(actualResult).toMatchObject(expectedResult);
+  });
+
+  it('returns correct data structure for single parent and single child ', () => {
+    const data = ['parent1/parent1child'];
+
+    const expectedResult = [{ title: 'parent1', data: ['parent1child'] }];
 
     const actualResult = createMenuData(data);
     expect(actualResult).toMatchObject(expectedResult);
