@@ -27,6 +27,10 @@ _*Following TDD*_
     { title: "parent1", data: ["parent1child", "parent1child2"] },
     { title: "parent2", data: ["parent2child"] }
 ]
+
+[null, undefined, parent1/child1, 10] => { title: 'parent1', data: ['parent1child'] }
+
+
 ```
 
 ## Tests (simplest first)
@@ -37,9 +41,15 @@ it returns correct data structure for single parent and single child
 it does not return an entry when parent has no children
 it returns correct data structure for single parent and 2 children
 it returns correct data structure for 2 parents and 3 children
+it skips null, undefined, integer
 ```
 
 ![tests](https://github.com/HarryMumford/createMenuData/blob/master/tests.PNG)
+
+## Edge cases
+
+1. If non string entries are passed then they are skipped.
+2. If strings are misspelt / not in the parent1child1 format they will still be added as long as there is a '/' in between the parent and child.
 
 ## Assumptions
 

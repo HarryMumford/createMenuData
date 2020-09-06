@@ -56,9 +56,9 @@ describe('menu Data Generator', () => {
   });
 
   it('skips null, undefined, integer', () => {
-    const data = [null, undefined, 10];
+    const data = [null, 'parent1/parent1child', undefined, 10];
 
-    const expectedResult = [];
+    const expectedResult = [{ title: 'parent1', data: ['parent1child'] }];
 
     const actualResult = createMenuData(data);
     expect(actualResult).toMatchObject(expectedResult);
