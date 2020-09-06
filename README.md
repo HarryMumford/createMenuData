@@ -36,6 +36,14 @@ it skips null, undefined, integer
 
 Following the example test, I have assumed the data is always in order. The algorithm does not sort the data if passed unordered (e.g. `['parent1/parent1child8', 'parent1/parent1child1']`)
 
+## How to setup
+
+1. Install dependencies `npm i`
+2. Watch all tests `npm t`
+
+## Linting
+I used a eslint and prettier on vscode
+
 ***
 ***
 ***
