@@ -5,33 +5,14 @@
 _*Following TDD*_
 
 ## Inputs and outputs
-
-```
-['parent1'] => []
-
-["parent1/parent1child"] => [{title: "parent1", data: ["parent1child"]}]
-
-["parent1/parent1child", 'parent2'] => [{title: "parent1", data: ["parent1child"]}]
-
-["parent1/parent1child", "parent1/parent1child2"] => [{ title: "parent1" data: ["parent1child", "parent1child2"] }]
-
-[
-    "parent1/parent1child",
-    "parent1/parent1child",
-    "parent2/parent1child1"
-]
-
-=>
-
-[
-    { title: "parent1", data: ["parent1child", "parent1child2"] },
-    { title: "parent2", data: ["parent2child"] }
-]
-
-[null, undefined, parent1/child1, 10] => { title: 'parent1', data: ['parent1child'] }
-
-
-```
+| inputs | outputs |
+|--------|---------|
+| `['parent1']`     | `[{title: "parent1", data: ["parent1child"]}]`      |
+| `["parent1/parent1child"]`     | `[{title: "parent1", data: ["parent1child"]}]`      |
+| `["parent1/parent1child", 'parent2']`     | `[{title: "parent1", data: ["parent1child"]}]`      |
+| `["parent1/parent1child", "parent1/parent1child2"]`     | `[{ title: "parent1" data: ["parent1child", "parent1child2"] }]`      |
+| `["parent1/parent1child","parent1/parent1child","parent2/parent1child1"]`|`[{ title: "parent1", data: ["parent1child", "parent1child2"] },{ title: "parent2", data ["parent2child"] }]` |
+|`[null, undefined, parent1/child1, 10]` | `[{ title: 'parent1', data: ['parent1child'] }]`|
 
 ## Tests (simplest first)
 
@@ -54,6 +35,10 @@ it skips null, undefined, integer
 ## Assumptions
 
 Following the example test, I have assumed the data is always in order. The algorithm does not sort the data if passed unordered (e.g. `['parent1/parent1child8', 'parent1/parent1child1']`)
+
+***
+***
+***
 
 ## Clone this repository
 
