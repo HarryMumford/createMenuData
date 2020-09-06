@@ -1,27 +1,33 @@
 function createMenuData(data) {
-  let output = [];
-  let parents = {};
+  let formattedOutput = [];
+  let sortedByParents = {};
 
   data.forEach((inputEntry) => {
+    if (typeof inputEntry != 'string') {
+      return;
+    }
+
     const parent = inputEntry.split('/')[0];
-    const children = inputEntry.split('/')[1];
+    const child = inputEntry.split('/')[1];
 
-    if (!children) {
-      return [];
+    if (!child) {
+      return;
     }
 
-    if (parents[parent]) {
-      parents[parent].push(children);
+    if (sortedByParents[parent]) {
+      sortedByParents[parent].push(child);
     } else {
-      parents[parent] = [children];
+      sortedByParents[parent] = [child];
     }
   });
 
-  Object.keys(parents).forEach((parent) => {
-    output.push({ title: parent, data: parents[parent] });
+  const parents = Object.keys(sortedByParents);
+
+  parents.forEach((parent) => {
+    formattedOutput.push({ title: parent, data: sortedByParents[parent] });
   });
 
-  return output;
+  return formattedOutput;
 }
 
 module.exports = createMenuData;

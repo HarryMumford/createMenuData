@@ -55,6 +55,15 @@ describe('menu Data Generator', () => {
     expect(actualResult).toMatchObject(expectedResult);
   });
 
+  it('skips null, undefined, integer', () => {
+    const data = [null, undefined, 10];
+
+    const expectedResult = [];
+
+    const actualResult = createMenuData(data);
+    expect(actualResult).toMatchObject(expectedResult);
+  });
+
   it('creates correct data structure ', () => {
     const data = [
       'parent1/parent1child',
